@@ -1,0 +1,146 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Aayush Phishing Detector</title>
+
+    <!-- Google Font -->
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;700&display=swap" rel="stylesheet">
+
+    <!-- Cybersecurity Animation (Lottie) -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/lottie-web/5.9.6/lottie.min.js"></script>
+
+    <style>
+        body {
+            font-family: 'Roboto', sans-serif;
+            background-color: #ffffff;
+            text-align: center;
+            margin: 0;
+            padding: 0;
+        }
+        .container {
+            margin-top: 10vh;
+        }
+        .logo {
+            font-size: 50px;
+            font-weight: bold;
+            color: #4285F4;
+        }
+        .logo span {
+            color: #EA4335;
+        }
+        .logo span:nth-child(2) {
+            color: #FBBC05;
+        }
+        .logo span:nth-child(3) {
+            color: #34A853;
+        }
+        .search-box {
+            width: 40%;
+            padding: 12px;
+            font-size: 18px;
+            border-radius: 30px;
+            border: 1px solid #dfe1e5;
+            box-shadow: 0 1px 6px rgba(32, 33, 36, 0.28);
+            outline: none;
+        }
+        .search-box:focus {
+            border-color: #4285F4;
+        }
+        .search-button {
+            margin-top: 20px;
+            padding: 10px 20px;
+            font-size: 16px;
+            background-color: #4285F4;
+            border: none;
+            color: white;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: background 0.3s;
+        }
+        .search-button:hover {
+            background-color: #357ae8;
+        }
+        .result-box {
+            margin-top: 20px;
+            font-size: 18px;
+            font-weight: bold;
+            padding: 10px;
+            border-radius: 5px;
+        }
+        .safe {
+            background-color: #d4edda;
+            color: #155724;
+            display: inline-block;
+            padding: 10px 20px;
+            border-radius: 10px;
+        }
+        .warning {
+            background-color: #f8d7da;
+            color: #721c24;
+            display: inline-block;
+            padding: 10px 20px;
+            border-radius: 10px;
+        }
+        .history {
+            margin-top: 30px;
+        }
+        .history-item {
+            margin: 5px;
+            padding: 10px;
+            border-radius: 5px;
+            font-size: 14px;
+            display: inline-block;
+            background-color: #f1f3f4;
+        }
+        #cyber-animation {
+            width: 150px;
+            margin: auto;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="container">
+        <div class="logo">
+    <span>A</span><span>a</span><span>y</span><span>u</span><span>s</span><span>h</span> Phishing Detecting Tool
+</div>
+
+        <!-- Cybersecurity Animation -->
+        <div id="cyber-animation"></div>
+
+        <form method="POST">
+            <input type="text" class="search-box" name="url" placeholder="Enter URL to check" required>
+            <br>
+            <button type="submit" class="search-button">Check URL</button>
+        </form>
+
+        {% if result %}
+            <div class="result-box {% if 'Warning' in result %}warning{% else %}safe{% endif %}">
+                {{ result }}
+            </div>
+        {% endif %}
+
+        <!-- Search History -->
+        <div class="history">
+            <h3>Recent Searches</h3>
+            {% for item in search_history %}
+                <div class="history-item">{{ item.url }} - {{ item.result }}</div>
+            {% endfor %}
+        </div>
+    </div>
+
+    <!-- Lottie Animation Script -->
+    <script>
+        var animation = lottie.loadAnimation({
+            container: document.getElementById('cyber-animation'),
+            renderer: 'svg',
+            loop: true,
+            autoplay: true,
+            path: 'https://assets10.lottiefiles.com/packages/lf20_3rhr33pi.json'
+        });
+    </script>
+
+</body>
+</html>

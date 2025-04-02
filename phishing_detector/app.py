@@ -4,7 +4,7 @@ import requests
 app = Flask(__name__)
 
 # Google Safe Browsing API Key
-API_KEY = "AIzaSyAsYkGlJQzqpJnBcWPs7MyOdOOWl8EMJaY"
+API_KEY = "*******************************"
 SAFE_BROWSING_URL = f"https://safebrowsing.googleapis.com/v4/threatMatches:find?key={API_KEY}"
 
 # Store search history
